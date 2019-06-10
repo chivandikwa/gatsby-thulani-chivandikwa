@@ -1,7 +1,7 @@
 ---
 layout: post
 title: React Gotchas and Code Smells!
-image: img/callum-shaw-555357-unsplash.jpg
+image: img/smell.jpg
 author: Ghost
 date: 2019-03-10T10:00:00.000Z
 tags:
