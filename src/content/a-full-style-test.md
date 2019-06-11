@@ -2,7 +2,7 @@
 layout: post
 title: A Full and Comprehensive Style Test
 image: img/testimg-cover.jpg
-author: Ghost
+author: Thulani S. Chivandikwa
 date: 2018-09-30T07:03:47.149Z
 tags: 
   - Tests
@@ -84,9 +84,9 @@ Definition
 
 | Table Header 1 | Table Header 2 | Table Header 3 |
 | :------------: | :------------: | :------------: |
-| Division 1     | Division 2     | Division 3     |
-| Division 1     | Division 2     | Division 3     |
-| Division 1     | Division 2     | Division 3     |
+|   Division 1   |   Division 2   |   Division 3   |
+|   Division 1   |   Division 2   |   Division 3   |
+|   Division 1   |   Division 2   |   Division 3   |
 
 ---
 

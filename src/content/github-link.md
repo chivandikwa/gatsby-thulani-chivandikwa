@@ -2,10 +2,9 @@
 layout: post
 title: React Gotchas and Code Smells!
 image: img/smell.jpg
-author: Ghost
+author: Thulani S. Chivandikwa
 date: 2019-03-10T10:00:00.000Z
-tags:
-  - Source
+tags: [React, Web]
 ---
 
 ## My path to React greatness
