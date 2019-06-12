@@ -5,6 +5,7 @@ image: img/smell.jpg
 author: Thulani S. Chivandikwa
 date: 2019-03-10T10:00:00.000Z
 tags: [React, Web]
+draft: true
 ---
 
 ## My path to React greatness
