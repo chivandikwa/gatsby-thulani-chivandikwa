@@ -32,6 +32,8 @@ I have setup my production deploys to come from master and for Netlify to build 
 ![deploy-settings](https://raw.githubusercontent.com/chivandikwa/gatsby-thulani-chivandikwa/master/src/content/img/deploy-settings.jpg)
 ![deploy-notifications](https://raw.githubusercontent.com/chivandikwa/gatsby-thulani-chivandikwa/master/src/content/img/deploy-notifications.jpg)
 ![github-branch-protection](https://raw.githubusercontent.com/chivandikwa/gatsby-thulani-chivandikwa/master/src/content/img/github-branch-protection.jpg)
+![run-checks](https://raw.githubusercontent.com/chivandikwa/gatsby-thulani-chivandikwa/master/src/content/img/run-checks.jpg)
+![checks-complete](https://raw.githubusercontent.com/chivandikwa/gatsby-thulani-chivandikwa/master/src/content/img/checks-complete.jpg)
 
 To further make my site optimized I have enabled pretty urls, bundling and minification of css and JavaScript and lossless compression of all images. To also allow search engine crawlers to see all the content on my site I ahve enabled prerendering with Netlify.
 ![optimization](https://raw.githubusercontent.com/chivandikwa/gatsby-thulani-chivandikwa/master/src/content/img/optimization.jpg)
