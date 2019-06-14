@@ -5,7 +5,7 @@ image: img/computer.jpg
 author: Thulani S. Chivandikwa
 date: 2019-03-10T10:00:00.000Z
 tags: [Microsoft Bot Framework, LUIS, Chat Bot, C#]
-draft: false
+draft: true
 ---
 
 ### Microsoft Bot Framework and LUIS
