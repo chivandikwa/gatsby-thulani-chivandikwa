@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Netlify love
+title: How I made my blog with Netlify
 image: img/bird2.jpg
 author: Thulani S. Chivandikwa
 date: 2019-03-06T10:00:00.000Z
@@ -8,7 +8,7 @@ tags: [Netlify, Blog]
 draft: false
 ---
 
-## I chose netlify :heart_decoration:
+## I chose Netlify :heart_decoration:
 
 When I decided to start my blog I did a thorough research to see what of the many available options would suite my needs. I looked at Blogger and WordPress which I had used before, medium which I myself am a regular at and a bunch off others. In the end I decided to go with something where I had full control. That is when I discovered two tings, Gatsby, a framework based on React and Netlify, everything you need to build fast, modern websites: continuous deployment, serverless functions, and so much more. The beauty of it all being that I could use them both together, with a lot of other things I appreciate like GraphQL and TypeScript. I will try not to be too excited about it all and focus only on Netlify.
 
