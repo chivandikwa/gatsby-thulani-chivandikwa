@@ -6,6 +6,8 @@
 
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=chivandikwa/gatsby-thulani-chivandikwa)](https://dependabot.com)
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/chivandikwa/gatsby-thulani-chivandikwa)
+
 ### https://chivandikwa.com/
 
 This is the repository for my blog found [here](https://chivandikwa.com/).
