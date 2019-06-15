@@ -43,3 +43,7 @@ Finally, dependabot can also be controlled in the PR conversation through a set 
 ### Conclusion
 
 This really makes what can otherwise be a tedious and timely task super easy and fast. Dependabot is getting popular, closing in on a million PRs merged. Having been acquired by GitHub it is a clear sign that it is a promising tool and will only get better. There is enough flexibility in this tool to be able to use it in a manner that best suits your needs
+
+> I also make use of [ImgBot] to watch for images on this blog and optimize them with lossless compression. This is also free for <3 open source repos. Check this out and on the first PR it creates, click the swag link and fill in a form to receive swag from the developers (sticker I assume).
+
+> I also make use of [Mergify](https://github.com/marketplace/mergify) to auto merge PR I created on this blog's repo if the CI checks have all passed. My CI check includes a [CodeFactor](https://github.com/marketplace/codefactor) check and a build + preview deploy on Netlify. I specifically target my PRs for auto merge but do not want PRs created by any other contributor or dependabot/imgbot to be merged.
