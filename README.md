@@ -1,5 +1,9 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/77978775-9dcc-4470-9b7a-03549c2fcd6f/deploy-status)](https://app.netlify.com/sites/thulanichivandikwa/deploys)
 
+[![CodeFactor](https://www.codefactor.io/repository/github/chivandikwa/gatsby-thulani-chivandikwa/badge)](https://www.codefactor.io/repository/github/chivandikwa/gatsby-thulani-chivandikwa/badge)
+
+[![Mergify Status](https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/chivandikwa/gatsby-thulani-chivandikwa)](https://mergify.io)
+
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=chivandikwa/gatsby-thulani-chivandikwa)](https://dependabot.com)
 
 ### https://chivandikwa.com/
