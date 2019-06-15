@@ -1,34 +1,13 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/77978775-9dcc-4470-9b7a-03549c2fcd6f/deploy-status)](https://app.netlify.com/sites/thulanichivandikwa/deploys)
+| Feature        |                |
+| :------------ | :------------ |
+| CI |   [![Netlify Status](https://api.netlify.com/api/v1/badges/77978775-9dcc-4470-9b7a-03549c2fcd6f/deploy-status)](https://app.netlify.com/sites/thulanichivandikwa/deploys) [![CodeFactor](https://www.codefactor.io/repository/github/chivandikwa/gatsby-thulani-chivandikwa/badge)](https://www.codefactor.io/repository/github/chivandikwa/gatsby-thulani-chivandikwa/badge)   |
+| Bots                  |    [![Mergify Status](https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/chivandikwa/gatsby-thulani-chivandikwa)](https://mergify.io) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=chivandikwa/gatsby-thulani-chivandikwa)](https://dependabot.com)   |
+| Repo Details          |    ![GitHub last commit](https://img.shields.io/github/last-commit/chivandikwa/gatsby-thulani-chivandikwa.svg?style=for-the-badge) ![GitHub repo size](https://img.shields.io/github/repo-size/chivandikwa/gatsby-thulani-chivandikwa.svg?style=for-the-badge) ![GitHub top language](https://img.shields.io/github/languages/top/chivandikwa/gatsby-thulani-chivandikwa.svg?style=for-the-badge) ![GitHub language count](https://img.shields.io/github/languages/count/chivandikwa/gatsby-thulani-chivandikwa.svg?style=for-the-badge) ![GitHub](https://img.shields.io/github/license/chivandikwa/gatsby-thulani-chivandikwa.svg?style=for-the-badge)
+| Social               |    ![Twitter Follow](https://img.shields.io/twitter/follow/thulanidotnet.svg?style=social) ![GitHub followers](https://img.shields.io/github/followers/chivandikwa.svg?style=social) ![GitHub stars](https://img.shields.io/github/stars/chivandikwa/gatsby-thulani-chivandikwa.svg?style=social) ![GitHub watchers](https://img.shields.io/github/watchers/chivandikwa/gatsby-thulani-chivandikwa.svg?style=social) ![GitHub forks](https://img.shields.io/github/forks/chivandikwa/gatsby-thulani-chivandikwa.svg?style=social)
+| Live Edit       |     [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/chivandikwa/gatsby-thulani-chivandikwa)
 
-[![CodeFactor](https://www.codefactor.io/repository/github/chivandikwa/gatsby-thulani-chivandikwa/badge)](https://www.codefactor.io/repository/github/chivandikwa/gatsby-thulani-chivandikwa/badge)
 
-[![Mergify Status](https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/chivandikwa/gatsby-thulani-chivandikwa)](https://mergify.io)
-
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=chivandikwa/gatsby-thulani-chivandikwa)](https://dependabot.com)
-
-![GitHub repo size](https://img.shields.io/github/repo-size/chivandikwa/gatsby-thulani-chivandikwa.svg?style=for-the-badge)
-
-![GitHub top language](https://img.shields.io/github/languages/top/chivandikwa/gatsby-thulani-chivandikwa.svg?style=for-the-badge)
-
-![GitHub language count](https://img.shields.io/github/languages/count/chivandikwa/gatsby-thulani-chivandikwa.svg?style=for-the-badge)
-
-![GitHub last commit](https://img.shields.io/github/last-commit/chivandikwa/gatsby-thulani-chivandikwa.svg?style=for-the-badge)
-
-![GitHub](https://img.shields.io/github/license/chivandikwa/gatsby-thulani-chivandikwa .svg?style=for-the-badge)
-
-![Twitter Follow](https://img.shields.io/twitter/follow/thulanidotnet.svg?style=social)
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/chivandikwa/gatsby-thulani-chivandikwa)
-
-![GitHub watchers](https://img.shields.io/github/watchers/chivandikwa/gatsby-thulani-chivandikwa.svg?style=social)
-
-![GitHub stars](https://img.shields.io/github/stars/chivandikwa/gatsby-thulani-chivandikwa.svg?style=social)
-
-![GitHub forks](https://img.shields.io/github/forks/chivandikwa/gatsby-thulani-chivandikwa.svg?style=social)
-
-![GitHub followers](https://img.shields.io/github/followers/chivandikwa.svg?style=social)
-
-### https://chivandikwa.com/
+### [VISIT BLOG](https://chivandikwa.com/)
 
 This is the repository for my blog found [here](https://chivandikwa.com/).
 
