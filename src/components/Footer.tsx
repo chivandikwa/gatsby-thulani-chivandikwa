@@ -71,17 +71,13 @@ const Footer: React.FunctionComponent = () => {
       <div css={[inner, SiteFooterContent]}>
         <section className="copyright">
           <Link to="/">{config.title}</Link> &copy; {new Date().getFullYear()}{' '}
-          {config.footer && (
-            <Link to="/">
-              | {config.title} {config.footer}
-            </Link>
-          )}
+          {config.footer && <Link to="/">| This blog {config.footer}</Link>}
         </section>
         <SiteFooterNav>
           <Link to="/">Latest Posts</Link>
           {config.facebook && (
             <a href={config.facebook} target="_blank" rel="noopener noreferrer">
-              Facebook
+              GitHub
             </a>
           )}
           {config.twitter && (
@@ -89,10 +85,6 @@ const Footer: React.FunctionComponent = () => {
               Twitter
             </a>
           )}
-
-          <a href="https://ghost.org" target="_blank" rel="noopener noreferrer">
-            Ghost
-          </a>
 
           <a href="/rss.xml">RSS</a>
         </SiteFooterNav>
