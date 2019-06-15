@@ -4,7 +4,7 @@ title: .NET Generic Host
 image: img/fly.jpg
 author: Thulani S. Chivandikwa
 date: 2019-06-13T10:00:00.000Z
-tags: [.NET, Generic Host, Configuration, Hosted Service]
+tags: [Generic Host, .NET, Configuration, Hosted Service]
 draft: false
 ---
 
