@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Dependabot dependency manager
-image: img/bird2.jpg
+image: img/seal.jpg
 author: Thulani S. Chivandikwa
 date: 2019-03-15T10:00:00.000Z
 tags: [Dependabot, Github, GitHub Tools, GitHub Marketplace, Bots]
