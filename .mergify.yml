@@ -1,0 +1,39 @@
+pull_request_rules:
+  - name: comment on automatic merge on CI success for PRs created by chivandikwa
+    conditions:
+      - status-success=netlify/thulanichivandikwa/deploy-preview
+      - status-success=mergefreeze
+      - status-success=CodeFactor
+      - base=master
+      - author=chivandikwa
+    actions:
+      comment:
+        message: All configured CI pipelines and checks have passed, PR will be auto merged.
+  - name: automatic merge on CI success for PRs created by chivandikwa
+    conditions:
+      - status-success=netlify/thulanichivandikwa/deploy-preview
+      - status-success=mergefreeze
+      - status-success=CodeFactor
+      - base=master
+      - author=chivandikwa
+    actions:
+      merge:
+        method: merge
+  - name: comment on netlify fail
+    conditions:
+      - status-failure=netlify/thulanichivandikwa/deploy-preview
+    actions:
+      comment:
+        message: Critical, Netlify build or preview deploy failed, PR will not be auto merged.
+  - name: comment on merge freeze
+    conditions:
+      - status-failure=mergefreeze
+    actions:
+      comment:
+        message: Warning, A merge freeze is currently active, PR will not be auto merged.
+  - name: comment on CodeFactor issues
+    conditions:
+      - status-failure=CodeFactor
+    actions:
+      comment:
+        message: Warning, CodeFactor detected issues, PR will not be auto merged.
