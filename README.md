@@ -14,3 +14,5 @@ This is the repository for my blog found [here](https://chivandikwa.com/).
 My blog is powered by [Gatsby](https://www.gatsbyjs.org/),a free and open source framework based on ReactGatsby is a free and open source framework based on React and by [Netlify](https://www.netlify.com/), everything you need to build fast, modern websites: continuous deployment, serverless functions, and so much more.
 
 The blog is a customized version of the gatbsy-casper [template](https://gatsby-casper.netlify.com/https://gatsby-casper.netlify.com/) a port of [Casper](https://github.com/TryGhost/Casper) v2 a theme from [Ghost](https://ghost.org/) for [GatsbyJS](https://www.gatsbyjs.org/) using [TypeScript](https://www.typescriptlang.org/).
+
+![blog-snapshot](https://raw.githubusercontent.com/chivandikwa/gatsby-thulani-chivandikwa/master/src/content/img/blog-snapshot.jpg)
