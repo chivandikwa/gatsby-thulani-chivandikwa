@@ -244,6 +244,6 @@ As a final note. The following services are registered by default during host in
 - IHostLifetime
 - IHost
 - IOptions
-- ILogger, ILogger<T>
+- ILogger, ILogger`<T>`
 
 Checkout the complete code sample used in this post [on github](https://github.com/chivandikwa/GenericHostBuilderRecipes).
