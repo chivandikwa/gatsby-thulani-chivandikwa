@@ -34,7 +34,7 @@
     "gatsby-plugin-sitemap": "^2.1.0",
     "gatsby-plugin-typescript": "2.0.15",
     "gatsby-remark-abbr": "1.0.0",
-    "gatsby-remark-copy-linked-files": "2.0.12",
+    "gatsby-remark-copy-linked-files": "2.1.0",
     "gatsby-remark-embed-gist": "^1.1.7",
     "gatsby-remark-emojis": "^0.3.2",
     "gatsby-remark-github": "^2.0.0",
