@@ -45,7 +45,7 @@
     "gatsby-remark-vscode": "^1.1.2",
     "gatsby-source-filesystem": "2.1.1",
     "gatsby-transformer-json": "2.2.2",
-    "gatsby-transformer-remark": "2.6.6",
+    "gatsby-transformer-remark": "2.6.19",
     "gatsby-transformer-sharp": "2.2.5",
     "gatsby-transformer-yaml": "2.2.4",
     "lodash": "4.17.11",
