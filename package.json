@@ -78,7 +78,7 @@
     "eslint-config-xo-space": "0.21.0",
     "eslint-config-xo-typescript": "0.15.0",
     "eslint-plugin-import": "2.18.2",
-    "eslint-plugin-react": "7.13.0",
+    "eslint-plugin-react": "7.14.3",
     "eslint-plugin-react-hooks": "1.7.0",
     "rimraf": "2.6.3",
     "typescript": "3.5.3"
