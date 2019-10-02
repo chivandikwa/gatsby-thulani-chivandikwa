@@ -14,7 +14,7 @@ I recently stumbled upon [figgle](https://github.com/drewnoakes/figgle/), a .net
 
 I wanted to get a glance at what all those 265 fonts look like and quickly dig into reflection to iterate through all the available fonts and sample them. Here is my little piece of reflection code and my results.
 
-```CSharp
+````CSharp
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -32,31 +32,34 @@ namespace FiggleFontsTests
                                 .GetProperties(BindingFlags.Public | BindingFlags.Static)
                                 .Where(info => info.PropertyType == typeof(FiggleFont));
 
-            var stringBuilder = new StringBuilder();
             foreach (PropertyInfo propertyInfo in propertyInfos)
             {
+                var stringBuilder = new StringBuilder();
+
                 try
                 {
+                    stringBuilder.AppendLine("```text");
                     stringBuilder.AppendLine(((FiggleFont)propertyInfo
                                                  .GetValue(null))
                                              .Render("SAMPLE"));
+                    stringBuilder.AppendLine("```");
                     stringBuilder.AppendLine(propertyInfo.Name);
+
                     stringBuilder.AppendLine();
                     stringBuilder.AppendLine();
                     stringBuilder.AppendLine();
+
+                    File.AppendAllText("result.txt", stringBuilder.ToString());
                 }
                 catch
                 {
                     // ignored
                 }
             }
-            File.AppendAllText("result.txt", stringBuilder.ToString());
         }
     }
 }
-```
-
-OneRow
+````
 
 ```text
 _\~ /\ |\/| |^ |_ [-
@@ -64,7 +67,7 @@ _\~ /\ |\/| |^ |_ [-
 
 ```
 
-ThreeD
+OneRow
 
 ```text
   ********     **     ****     **** *******  **       ********
@@ -78,7 +81,7 @@ ThreeD
 
 ```
 
-ThreeDDiagonal
+ThreeD
 
 ```text
                                                          ,--,
@@ -100,7 +103,7 @@ ThreeDDiagonal
 
 ```
 
-ThreeByFive
+ThreeDDiagonal
 
 ```text
 
@@ -112,7 +115,7 @@ ThreeByFive
 
 ```
 
-FourMax
+ThreeByFive
 
 ```text
 .dP"Y8    db    8b    d8 88""Yb 88     888888
@@ -122,7 +125,7 @@ o.`Y8b  dP__Yb  88YbdP88 88"""  88  .o 88""
 
 ```
 
-FiveLineOblique
+FourMax
 
 ```text
 
@@ -134,7 +137,7 @@ FiveLineOblique
 
 ```
 
-Acrobatic
+FiveLineOblique
 
 ```text
     o__ __o           o           o          o    o__ __o     o            o__ __o__/_
@@ -152,7 +155,7 @@ Acrobatic
 
 ```
 
-Alligator
+Acrobatic
 
 ```text
       ::::::::     :::      :::   :::  ::::::::: :::       ::::::::::
@@ -162,6 +165,19 @@ Alligator
         +#++#+     +#++#+       +#++#+       +#+       +#+
 #+#    #+##+#     #+##+#       #+##+#       #+#       #+#
 ######## ###     ######       ######       ####################
+
+```
+
+Alligator
+
+```text
+ ::::::::     :::    ::::    :::: ::::::::: :::       ::::::::::
+:+:    :+:  :+: :+:  +:+:+: :+:+:+:+:    :+::+:       :+:
++:+        +:+   +:+ +:+ +:+:+ +:++:+    +:++:+       +:+
++#++:++#+++#++:++#++:+#+  +:+  +#++#++:++#+ +#+       +#++:++#
+       +#++#+     +#++#+       +#++#+       +#+       +#+
+#+#    #+##+#     #+##+#       #+##+#       #+#       #+#
+ ######## ###     ######       ######       ####################
 
 ```
 
@@ -179,19 +195,6 @@ Alligator2
 ```
 
 Alligator3
-
-```text
- ::::::::     :::    ::::    :::: ::::::::: :::       ::::::::::
-:+:    :+:  :+: :+:  +:+:+: :+:+:+:+:    :+::+:       :+:
-+:+        +:+   +:+ +:+ +:+:+ +:++:+    +:++:+       +:+
-+#++:++#+++#++:++#++:+#+  +:+  +#++#++:++#+ +#+       +#++:++#
-       +#++#+     +#++#+       +#++#+       +#+       +#+
-#+#    #+##+#     #+##+#       #+##+#       #+#       #+#
- ######## ###     ######       ######       ####################
-
-```
-
-Alpha
 
 ```text
           _____                    _____                    _____                    _____                    _____            _____
@@ -219,7 +222,7 @@ Alpha
 
 ```
 
-Alphabet
+Alpha
 
 ```text
  SSS   AA  M   M PPPP  L    EEEE
@@ -232,7 +235,7 @@ SSSS  A  A M   M P     LLLL EEEE
 
 ```
 
-Amc3Line
+Alphabet
 
 ```text
 .-. .-. .  . .-. .   .-.
@@ -242,7 +245,7 @@ Amc3Line
 
 ```
 
-Amc3Liv1
+Amc3Line
 
 ```text
 .: S;:. .:;S;:. .:;S;:. .::.         :.
@@ -252,7 +255,7 @@ S  S  S S  S     )      S  S          S S  S  S
 
 ```
 
-AmcAaa01
+Amc3Liv1
 
 ```text
   sSSs   .S_SSSs     .S_SsS_S.    .S_sSSs    S.        sSSs
@@ -273,7 +276,7 @@ YSS'    SSS    S*S  SSS     S*S  S*S           YSSP    YSSP
 
 ```
 
-AmcNeko
+AmcAaa01
 
 ```text
 .sSSSSs.    .sSSSSs.    .sSSSsSS SSsSSSSS .sSSSSs.    SSSSS       .sSSSSs.
@@ -289,7 +292,7 @@ SSSSSsSSSSS SSSSS SSSSS SSSSS       SSSSS SSSSS       SSSSSsSS;:' SSSSSsSS;:'
 
 ```
 
-AmcRazor2
+AmcNeko
 
 ```text
    . .       . .       . .    .       . .       .         . .
@@ -304,7 +307,7 @@ AmcRazor2
 
 ```
 
-AmcRazor
+AmcRazor2
 
 ```text
  ___   ___                                 __                     ___
@@ -317,7 +320,7 @@ AmcRazor
 
 ```
 
-AmcSlash
+AmcRazor
 
 ```text
 .s5SSSs.  .s5SSSs.  .s5ssSs.  .s5SSSs.  .s        .s5SSSs.
@@ -333,7 +336,7 @@ SS        SS    S%S SS :; S%S SS    S%S SS        SS
 
 ```
 
-AmcSlder
+AmcSlash
 
 ``````````text
                                                                              ____
@@ -345,7 +348,7 @@ AmcSlder
 
 ``````````
 
-AmcThin
+AmcSlder
 
 ```text
 .-..-. .-..-..-. .-.-. .-.-. .-..--.   .-.     .-..--.
@@ -358,7 +361,7 @@ AmcThin
 
 ```
 
-AmcTubes
+AmcThin
 
 ```text
   sss. d s.   d s   sb d ss.  d      d sss
@@ -372,7 +375,7 @@ Y      S   `b S   S  S S    P S      S
 
 ```
 
-AmcUn1
+AmcTubes
 
 ```text
 ,'',,'', ,'',,''', ,'',,'',,'', ,'',,'', ,'',     ,'',,'',
@@ -386,7 +389,7 @@ AmcUn1
 
 ```
 
-Arrows
+AmcUn1
 
 ```text
   >=>>=>         >>       >=>       >=> >======>   >=>       >=======>
@@ -400,7 +403,7 @@ Arrows
 
 ```
 
-AsciiNewroman
+Arrows
 
 ```text
  ____,____,__, _,____,__,  ____,
@@ -410,7 +413,7 @@ AsciiNewroman
 
 ```
 
-Avatar
+AsciiNewroman
 
 ```text
  ____  ____  _      ____  _     _____
@@ -422,14 +425,14 @@ Avatar
 
 ```
 
-B1FF
+Avatar
 
 ```text
 5/-\/\/\P|_3
 
 ```
 
-Banner
+B1FF
 
 ```text
   #####     #    #     # ######  #       #######
@@ -443,7 +446,7 @@ Banner
 
 ```
 
-Banner3
+Banner
 
 ```text
  ######     ###    ##     ## ########  ##       ########
@@ -456,7 +459,7 @@ Banner3
 
 ```
 
-Banner3D
+Banner3
 
 ```text
 :'######:::::'###::::'##::::'##:'########::'##:::::::'########:
@@ -470,7 +473,7 @@ Banner3D
 
 ```
 
-Banner4
+Banner3D
 
 ```text
 ..######.....###....##.....##.########..##.......########
@@ -483,7 +486,7 @@ Banner4
 
 ```
 
-BarbWire
+Banner4
 
 ```text
   ><< <<        ><       ><<       ><<><<<<<<<  ><<      ><<<<<<<<
@@ -497,7 +500,7 @@ BarbWire
 
 ```
 
-Basic
+BarbWire
 
 ```text
 .d8888.  .d8b.  .88b  d88. d8888b. db      d88888b
@@ -511,7 +514,7 @@ db   8D 88   88 88  88  88 88      88booo. 88.
 
 ```
 
-Bear
+Basic
 
 ```text
    _     _      _     _      _     _      _     _      _     _      _     _
@@ -526,7 +529,7 @@ Bear
 
 ```
 
-Bell
+Bear
 
 ```text
    _____     .    __   __ .___  .     .____
@@ -538,14 +541,14 @@ Bell
 
 ```
 
-Benjamin
+Bell
 
 ```text
 _\"/-\|\/||'|_[-
 
 ```
 
-Big
+Benjamin
 
 ```text
    _____         __  __ _____  _      ______
@@ -559,7 +562,7 @@ Big
 
 ```
 
-BigChief
+Big
 
 ```text
 ___________________________________________________
@@ -573,7 +576,7 @@ _(____/___/____|_/__/___|_/________/____/_/____ ___
 
 ```
 
-BigFig
+BigChief
 
 ```text
  __ _     _     __
@@ -582,14 +585,14 @@ __)| || ||  |__|__
 
 ```
 
-Binary
+BigFig
 
 ```text
 01010011 01000001 01001101 01010000 01001100 01000101
 
 ```
 
-Block
+Binary
 
 ```text
 
@@ -603,7 +606,7 @@ Block
 
 ```
 
-Blocks
+Block
 
 ```text
  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.
@@ -620,7 +623,7 @@ Blocks
 
 ```
 
-Bolger
+Blocks
 
 ```text
 ,d88~~\      e           e    e      888~-_   888     888~~
@@ -633,7 +636,7 @@ Bolger
 
 ```
 
-Braced
+Bolger
 
 ```text
  .----.  .--.  .-.  .-..-.-. .-.   .----.
@@ -644,7 +647,7 @@ Braced
 
 ```
 
-Bright
+Braced
 
 ```text
 ..####....####...##...##..#####...##......######.
@@ -656,7 +659,7 @@ Bright
 
 ```
 
-Broadway
+Bright
 
 ```text
                                               .         .
@@ -673,7 +676,7 @@ Broadway
 
 ```
 
-BroadwayKB
+Broadway
 
 ```text
  __    __    _      ___   _     ____
@@ -682,7 +685,7 @@ _)_) /_/--\ |_|  | |_|   |_|__ |_|__
 
 ```
 
-Bubble
+BroadwayKB
 
 ```text
    _   _   _   _   _   _
@@ -692,7 +695,7 @@ Bubble
 
 ```
 
-Bulbhead
+Bubble
 
 ```text
  ___    __    __  __  ____  __    ____
@@ -702,7 +705,7 @@ Bulbhead
 
 ```
 
-Caligraphy2
+Bulbhead
 
 ```text
 
@@ -728,7 +731,7 @@ Caligraphy2
 
 ```
 
-Caligraphy
+Caligraphy2
 
 ```text
 
@@ -755,7 +758,7 @@ Caligraphy
 
 ```
 
-Cards
+Caligraphy
 
 ```text
 .------..------..------..------..------..------.
@@ -767,7 +770,7 @@ Cards
 
 ```
 
-CatWalk
+Cards
 
 ```text
   _// //        _/       _//       _//_///////  _//      _////////
@@ -781,7 +784,7 @@ _//    _// _//       _// _//       _//_//       _//      _//
 
 ```
 
-Chiseled
+CatWalk
 
 ```text
    ,-,--.   ,---.             ___      _ __                 ,----.
@@ -796,7 +799,7 @@ Chiseled
 
 ```
 
-Chunky
+Chiseled
 
 ```text
  _______ _______ _______ ______ _____   _______
@@ -807,7 +810,7 @@ Chunky
 
 ```
 
-Coinstak
+Chunky
 
 ```text
   O)) O)        O)       O))       O))O)))))))  O))      O))))))))
@@ -821,7 +824,7 @@ O))    O)) O))       O)) O))       O))O))       O))      O))
 
 ```
 
-Cola
+Coinstak
 
 ```text
            .-.   /\        .-.       .-.           .-.           .-
@@ -833,7 +836,7 @@ Cola
 
 ```
 
-Colossal
+Cola
 
 ```text
  .d8888b.        d8888888b     d8888888888b. 888     8888888888
@@ -850,7 +853,7 @@ Y88b  d88P d8888888888888   "   888888       888     888
 
 ```
 
-Computer
+Colossal
 
 ```text
 8""""8 8""""8 8""8""8 8""""8 8     8""""
@@ -863,7 +866,7 @@ e   88 88   8 88 8  8 88     88    88
 
 ```
 
-Contessa
+Computer
 
 ```text
  __..__..  ..__ .   .___
@@ -873,7 +876,7 @@ Contessa
 
 ```
 
-Contrast
+Contessa
 
 ```text
 ..%%%%....%%%%...%%...%%..%%%%%...%%......%%%%%%.
@@ -884,6 +887,18 @@ Contrast
 .................................................
 
 ```
+
+Contrast
+
+````text
+ .::::::.   :::.     .        :::::::::::. :::    .,::::::
+;;;`    `   ;;`;;    ;;,.    ;;;`;;;```.;;;;;;    ;;;;''''
+'[==/[[[[, ,[[ '[[,  [[[[, ,[[[[,`]]nnn]]' [[[     [[cccc
+  '''    $c$$$cc$$$c $$$$$$$$"$$$ $$$""    $$'     $$""""
+ 88b    dP 888   888,888 Y88" 888o888o    o88oo,.__888oo,__
+  "YMmMY"  YMM   ""` MMM  M'  "MMMYMMMb   """"YUMMM""""YUMMM
+
+````
 
 Cosmic
 
@@ -899,18 +914,6 @@ Cosmic
 
 Cosmike
 
-````text
- .::::::.   :::.     .        :::::::::::. :::    .,::::::
-;;;`    `   ;;`;;    ;;,.    ;;;`;;;```.;;;;;;    ;;;;''''
-'[==/[[[[, ,[[ '[[,  [[[[, ,[[[[,`]]nnn]]' [[[     [[cccc
-  '''    $c$$$cc$$$c $$$$$$$$"$$$ $$$""    $$'     $$""""
- 88b    dP 888   888,888 Y88" 888o888o    o88oo,.__888oo,__
-  "YMmMY"  YMM   ""` MMM  M'  "MMMYMMMb   """"YUMMM""""YUMMM
-
-````
-
-Crawford
-
 ```text
   _____  ____  ___ ___  ____  _        ___
  / ___/ /    T|   T   T|    \| T      /  _]
@@ -923,7 +926,7 @@ Crawford
 
 ```
 
-Crazy
+Crawford
 
 ````text
 
@@ -942,7 +945,7 @@ Crazy
 
 ````
 
-Cricket
+Crazy
 
 ```text
   _______ _______ ___ ___ _______ ___     _______
@@ -956,7 +959,7 @@ Cricket
 
 ```
 
-Cursive
+Cricket
 
 ```text
   ()     __  _ _ _  _ __   _   __
@@ -968,7 +971,7 @@ Cursive
 
 ```
 
-CyberLarge
+Cursive
 
 ```text
  _______ _______ _______  _____         _______
@@ -978,7 +981,7 @@ CyberLarge
 
 ```
 
-CyberMedium
+CyberLarge
 
 ```text
 ____ ____ _  _ ___  _    ____
@@ -988,7 +991,7 @@ ___] |  | |  | |    |___ |___
 
 ```
 
-CyberSmall
+CyberMedium
 
 ```text
  ____ ____ _  _ ___  _    ____
@@ -996,7 +999,7 @@ CyberSmall
 
 ```
 
-Cygnet
+CyberSmall
 
 ```text
 
@@ -1007,7 +1010,7 @@ Cygnet
 
 ```
 
-DANC4
+Cygnet
 
 ```text
  |_O_|#  \O/#  \O/#   \O  |_O    \O/#
@@ -1017,7 +1020,7 @@ _|  \    /  |  / \     | _|  \   / \
 
 ```
 
-DancingFont
+DANC4
 
 ```text
   ____       _      __  __    ____      _     U _____ u
@@ -1030,14 +1033,14 @@ DancingFont
 
 ```
 
-Decimal
+DancingFont
 
 ```text
 83 65 77 80 76 69
 
 ```
 
-DefLeppard
+Decimal
 
 ```text
 
@@ -1059,7 +1062,7 @@ DefLeppard
 
 ```
 
-Diamond
+DefLeppard
 
 ```text
   /\\ \\        /\       /\\       /\\/\\\\\\\  /\\      /\\\\\\\\
@@ -1073,7 +1076,7 @@ Diamond
 
 ```
 
-DietCola
+Diamond
 
 ```text
          .-.   /\        .-.       .-.          .-.           .-
@@ -1085,7 +1088,7 @@ DietCola
 
 ```
 
-Digital
+DietCola
 
 ```text
  +-+-+-+-+-+-+
@@ -1094,7 +1097,7 @@ Digital
 
 ```
 
-Doh
+Digital
 
 ```text
 
@@ -1125,7 +1128,7 @@ S:::::::::::::::SSA:::::A                 A:::::A M::::::M               M::::::
 
 ```
 
-Doom
+Doh
 
 ```text
  _____  ___  ___  _________ _      _____
@@ -1139,7 +1142,7 @@ Doom
 
 ```
 
-DosRebel
+Doom
 
 ```text
   ���������    ���������   ������   ������ �����������  �����       ����������
@@ -1156,7 +1159,7 @@ DosRebel
 
 ```
 
-DotMatrix
+DosRebel
 
 ```text
       _  _  _  _          _        _           _  _  _  _  _    _              _  _  _  _  _
@@ -1172,7 +1175,7 @@ DotMatrix
 
 ```
 
-Double
+DotMatrix
 
 ```text
   __   ___  ___  ___ ____  __     ____
@@ -1183,7 +1186,7 @@ Double
 
 ```
 
-DoubleShorts
+Double
 
 ```text
   __ ___ ___  _________   _____
@@ -1192,7 +1195,7 @@ DoubleShorts
 
 ```
 
-DRPepper
+DoubleShorts
 
 ```text
  ___  ___  __ __  ___  _    ___
@@ -1203,7 +1206,7 @@ DRPepper
 
 ```
 
-DWhistled
+DRPepper
 
 ```text
 S MPL
@@ -1219,10 +1222,8 @@ SAMPLE
 
 ```
 
-EftiChess
+DWhistled
 
-````text
-EftiFont
 ```text
  __  _   _   _  ___ _    ___
 / _|/ \ | \_/ || o \ |  | __|
@@ -1230,9 +1231,9 @@ EftiFont
 |__/_n_||_| |_||_| |___||___|
 
 
-````
+```
 
-EftiPiti
+EftiFont
 
 ```text
    _  _ _  _ ||  __
@@ -1241,7 +1242,7 @@ EftiPiti
 
 ```
 
-EftiRobot
+EftiPiti
 
 ```text
  ___    __   _   _  ___   _    ____
@@ -1253,7 +1254,7 @@ EftiRobot
 
 ```
 
-EftiItalic
+EftiRobot
 
 ```text
     ___   _   _   __ ___  __   ___
@@ -1264,7 +1265,7 @@ EftiItalic
 
 ```
 
-EftiWall
+EftiItalic
 
 ```text
 
@@ -1274,7 +1275,7 @@ ooO--(_)--Ooo-ooO--(_)--Ooo-ooO--(_)--Ooo-ooO--(_)--Ooo-ooO--(_)--Ooo-ooO--(_)--
 
 ```
 
-EftiWater
+EftiWall
 
 ```text
 ___   __  _  _  ___ _   ___
@@ -1284,7 +1285,7 @@ _(( (( ( ((`(( ((  ((__((_
 
 ```
 
-Epic
+EftiWater
 
 ```text
  _______  _______  _______  _______  _        _______
@@ -1299,7 +1300,7 @@ Epic
 
 ```
 
-Fender
+Epic
 
 ```text
 .|'''|       /.\      '||\   /||` '||'''|, '||     '||''''|
@@ -1312,7 +1313,7 @@ Fender
 
 ```
 
-Filter
+Fender
 
 ```text
 88888888 ,8b.    d88b_o8b8888PPPp,888       ,d8PPPP
@@ -1323,7 +1324,7 @@ Filter
 
 ```
 
-FireFontK
+Filter
 
 ```text
  (                *     (    (
@@ -1338,7 +1339,7 @@ FireFontK
 
 ```
 
-FireFontS
+FireFontK
 
 ```text
  (              *    (   (
@@ -1353,7 +1354,7 @@ FireFontS
 
 ```
 
-Flipped
+FireFontS
 
 ```text
  _ __  ___   ____  ____        ____
@@ -1363,7 +1364,7 @@ Flipped
 
 ```
 
-FlowerPower
+Flipped
 
 ```text
    .-'''-.    ____    ,---.    ,---..-------.   .---.       .-''-.
@@ -1379,7 +1380,7 @@ FlowerPower
 
 ```
 
-FourTops
+FlowerPower
 
 ```text
 /~~\  /\  |\  /||~~\|  |~~
@@ -1389,7 +1390,7 @@ FourTops
 
 ```
 
-Fraktur
+FourTops
 
 ```text
        ...              ..                  ...     ..      ..         ....      ..           ...            ..      .
@@ -1410,7 +1411,7 @@ X: `*88888%`     !   .-` X*"    8888      -^  '888"  X888  8888>     ~`...8888X 
 
 ```
 
-FunFace
+Fraktur
 
 ```text
    oo_         \\\    /// ))    W  W
@@ -1423,7 +1424,7 @@ FunFace
 
 ```
 
-FunFaces
+FunFace
 
 ```text
    oo_         \\\    /// ))    W  W    wWw
@@ -1436,7 +1437,7 @@ FunFaces
 
 ```
 
-Fuzzy
+FunFaces
 
 ```text
  .--.  .--. .-..-..---. .-.    .--.
@@ -1449,7 +1450,7 @@ Fuzzy
 
 ```
 
-Georgia16
+Fuzzy
 
 ```text
 
@@ -1471,7 +1472,7 @@ MYMMMM9  _dM_     _dMM__M_      _MM__MM_       _MMMMMMM _MMMMMMMMM
 
 ```
 
-Georgia11
+Georgia16
 
 ```text
 
@@ -1488,7 +1489,7 @@ P"Ybmmd" .AMA.   .AMMA..JML. `'  .JMML..JMML.    .JMMmmmmMMM .JMMmmmmMMM
 
 ```
 
-Ghost
+Georgia11
 
 ```text
   .-')     ('-.     _   .-')      _ (`-.              ('-.
@@ -1503,7 +1504,7 @@ Ghost
 
 ```
 
-Ghoulish
+Ghost
 
 ```text
   )\.--.    /`-.   )\   )\    /`-.  .')     )\.---.
@@ -1516,7 +1517,7 @@ Ghoulish
 
 ```
 
-Glenyn
+Ghoulish
 
 ```text
 ___  ___  _    ____ __   ____
@@ -1526,7 +1527,7 @@ ___  ___  _    ____ __   ____
 
 ```
 
-Goofy
+Glenyn
 
 ```text
 _       ______  _____          _     ___     ____        __
@@ -1538,7 +1539,7 @@ _       ______  _____          _     ___     ____        __
 
 ```
 
-Gothic
+Goofy
 
 ```text
           ___
@@ -1553,7 +1554,7 @@ Gothic
 
 ```
 
-Graceful
+Gothic
 
 ```text
  ____   __   _  _  ____  __    ____
@@ -1563,7 +1564,7 @@ Graceful
 
 ```
 
-Gradient
+Graceful
 
 ```text
 .eeeeee..eeeeee..eee......eee.eeeeeee..eee....eeeeee.
@@ -1578,7 +1579,7 @@ Gradient
 
 ```
 
-Graffiti
+Gradient
 
 ```text
   _________   _____      _____ __________.____     ___________
@@ -1590,7 +1591,7 @@ Graffiti
 
 ```
 
-Greek
+Graffiti
 
 ```text
 
@@ -1605,7 +1606,7 @@ ______  ___  __   __ _______         _____
 
 ```
 
-HeartLeft
+Greek
 
 ```text
  .-.-. .-.-. .-.-. .-.-. .-.-. .-.-.
@@ -1615,7 +1616,7 @@ HeartLeft
 
 ```
 
-HeartRight
+HeartLeft
 
 ```text
 .-.-. .-.-. .-.-. .-.-. .-.-. .-.-.
@@ -1625,7 +1626,7 @@ HeartRight
 
 ```
 
-Henry3d
+HeartRight
 
 ```text
     ___        _        __  __      ___    _         ____
@@ -1639,14 +1640,14 @@ Henry3d
 
 ```
 
-Hex
+Henry3d
 
 ```text
 53 41 4D 50 4C 45
 
 ```
 
-Hieroglyphs
+Hex
 
 ```text
 ,-. ,-~~\           |||[]|||   ,-.       ,-.
@@ -1656,7 +1657,7 @@ Hieroglyphs
 
 ```
 
-Hollywood
+Hieroglyphs
 
 ```text
            _           ,        _               _         _       _
@@ -1672,7 +1673,7 @@ Hollywood
 
 ```
 
-HorizontalLeft
+Hollywood
 
 ```text
       __   ______  _______  _______  _______  _______
@@ -1684,7 +1685,7 @@ HorizontalLeft
 
 ```
 
-HorizontalRight
+HorizontalLeft
 
 ```text
  __       ______   _______  _______  _______  _______
@@ -1696,7 +1697,7 @@ HorizontalRight
 
 ```
 
-ICL1900
+HorizontalRight
 
 ```text
 SAMPLE
@@ -1715,7 +1716,7 @@ SAMPLE
 
 ```
 
-Impossible
+ICL1900
 
 ```text
         _            _                  _   _         _          _             _
@@ -1733,7 +1734,7 @@ Impossible
 
 ```
 
-Invita
+Impossible
 
 ```text
       __   _____    __     __)  _____        _       _____)
@@ -1745,7 +1746,7 @@ Invita
 
 ```
 
-Isometric1
+Invita
 
 ```text
       ___           ___           ___           ___           ___       ___
@@ -1762,7 +1763,7 @@ Isometric1
 
 ```
 
-Isometric2
+Isometric1
 
 ```text
       ___           ___           ___           ___                       ___
@@ -1779,7 +1780,7 @@ Isometric2
 
 ```
 
-Isometric3
+Isometric2
 
 ```text
       ___           ___           ___           ___                       ___
@@ -1796,7 +1797,7 @@ Isometric3
 
 ```
 
-Isometric4
+Isometric3
 
 ```text
       ___           ___           ___                         ___       ___
@@ -1813,7 +1814,7 @@ Isometric4
 
 ```
 
-Italic
+Isometric4
 
 ```text
   __ _        __    ___
@@ -1823,7 +1824,7 @@ __)(  |/   |/   (__/__
 
 ```
 
-Ivrit
+Italic
 
 ```text
   ____    _    __  __ ____  _     _____
@@ -1835,7 +1836,7 @@ Ivrit
 
 ```
 
-Jacky
+Ivrit
 
 ```text
   _____     ____       __    __     _____    _____        _____
@@ -1849,7 +1850,7 @@ Jacky
 
 ```
 
-Jazmine
+Jacky
 
 ```text
 
@@ -1865,7 +1866,7 @@ Jazmine
 
 ```
 
-Jerusalem
+Jazmine
 
 ```text
 
@@ -1878,7 +1879,7 @@ Jerusalem
 
 ```
 
-Katakana
+Jerusalem
 
 ```text
   ######   ########## ########    #        #       #        #
@@ -1892,7 +1893,7 @@ Katakana
 
 ```
 
-Kban
+Katakana
 
 ```text
  .|'''.|      |     '||    ||' '||''|.  '||'      '||''''|
@@ -1905,7 +1906,7 @@ Kban
 
 ```
 
-Keyboard
+Kban
 
 ```text
 
@@ -1920,7 +1921,7 @@ Keyboard
 
 ```
 
-Knob
+Keyboard
 
 ```text
  _   _____  _________  _________  _________  _________  _________
@@ -1930,7 +1931,7 @@ Knob
 
 ```
 
-Konto
+Knob
 
 ```text
 /�� .^. IVI I��, I   I.`
@@ -1938,7 +1939,7 @@ Konto
 
 ```
 
-KontoSlant
+Konto
 
 ```text
  /��  /1  /1/1  /�/  /  /.�
@@ -1946,7 +1947,7 @@ KontoSlant
 
 ```
 
-Larry3d
+KontoSlant
 
 ```text
  ____    ______           ____    __       ____
@@ -1961,7 +1962,7 @@ Larry3d
 
 ```
 
-Lcd
+Larry3d
 
 ```text
  ___   ___         ___         ___
@@ -1973,7 +1974,7 @@ Lcd
 
 ```
 
-Lean
+Lcd
 
 ```text
 
@@ -1987,7 +1988,7 @@ _/_/_/    _/    _/  _/      _/  _/        _/_/_/_/  _/_/_/_/
 
 ```
 
-Letters
+Lean
 
 ```text
  SSSSS    AAA   MM    MM PPPPPP  LL      EEEEEEE
@@ -1999,7 +2000,7 @@ SS       AAAAA  MMM  MMM PP   PP LL      EE
 
 ```
 
-LilDevil
+Letters
 
 ```text
  (`-').-> (`-')  _ <-. (`-')   _  (`-')          (`-')  _
@@ -2013,7 +2014,7 @@ LilDevil
 
 ```
 
-LineBlocks
+LilDevil
 
 ```text
  ______   ______   _________   ______   _        ______
@@ -2024,7 +2025,7 @@ LineBlocks
 
 ```
 
-Linux
+LineBlocks
 
 ```text
 .---..---..-.-.-..---..-.   .---.
@@ -2034,7 +2035,7 @@ Linux
 
 ```
 
-LockerGnome
+Linux
 
 ```text
 .:::::| ::::\ ::::::|::::::\::|    ::::::|
@@ -2044,7 +2045,7 @@ LockerGnome
 
 ```
 
-Madrid
+LockerGnome
 
 ```text
 /=\ /=\ /\/\ /=\ /   /=\
@@ -2054,7 +2055,7 @@ Madrid
 
 ```
 
-Marquee
+Madrid
 
 ```text
   .:: ::        .:       .::       .::.:::::::  .::      .::::::::
@@ -2068,7 +2069,7 @@ Marquee
 
 ```
 
-MaxFour
+Marquee
 
 ```text
 /~~\  /\  |\  /||~~\|  |~~
@@ -2078,7 +2079,7 @@ MaxFour
 
 ```
 
-Merlin1
+MaxFour
 
 ```text
   ________     __       ___      ___    _______   ___       _______
@@ -2092,7 +2093,7 @@ Merlin1
 
 ```
 
-Merlin2
+Merlin1
 
 ```text
     _        _       _              _         _           _
@@ -2107,7 +2108,7 @@ Merlin2
 
 ```
 
-Mike
+Merlin2
 
 ```text
                 |  _
@@ -2116,7 +2117,7 @@ Mike
 
 ```
 
-Mini
+Mike
 
 ```text
   __         _    _
@@ -2126,7 +2127,7 @@ Mini
 
 ```
 
-Mirror
+Mini
 
 ```text
   ____    _    __  __  ____     _ _____
@@ -2138,14 +2139,14 @@ Mirror
 
 ```
 
-Mnemonic
+Mirror
 
 ```text
 SAMPLE
 
 ```
 
-Modular
+Mnemonic
 
 ```text
  _______  _______  __   __  _______  ___      _______
@@ -2155,6 +2156,13 @@ Modular
 |_____  ||       ||       ||    ___||   |___ |    ___|
  _____| ||   _   || ||_|| ||   |    |       ||   |___
 |_______||__| |__||_|   |_||___|    |_______||_______|
+
+```
+
+Modular
+
+```text
+... .- -- .--. .-.. .
 
 ```
 
@@ -2168,13 +2176,6 @@ Morse
 Morse2
 
 ```text
-... .- -- .--. .-.. .
-
-```
-
-Moscow
-
-```text
 
  ####   #   #   # ##### ##### #####
 #      # #  ## ## #   #  #  # #
@@ -2184,7 +2185,7 @@ Moscow
 
 ```
 
-Mshebrew210
+Moscow
 
 ```text
 
@@ -2194,7 +2195,7 @@ Mshebrew210
 
 ```
 
-Muzzle
+Mshebrew210
 
 ```text
     __              __
@@ -2204,7 +2205,7 @@ Muzzle
 
 ```
 
-NancyJ
+Muzzle
 
 ```text
 .d88888b   .d888888  8888ba.88ba   888888ba  dP         88888888b
@@ -2218,7 +2219,7 @@ d8'   .8P 88     88  88   88   88  88        88         88
 
 ```
 
-NancyJFancy
+NancyJ
 
 ```text
 MP""""""`MM MMP"""""""MM M"""""`'"""`YM MM"""""""`YM M""MMMMMMMM MM""""""""`M
@@ -2232,7 +2233,7 @@ MMMMMMMMMMM MMMMMMMMMMMM MMMMMMMMMMMMMM MMMMMMMMMMMM MMMMMMMMMMM MMMMMMMMMMMM
 
 ```
 
-NancyJImproved
+NancyJFancy
 
 ```text
 .d88888b   .d888888  8888ba.88ba   888888ba  dP         88888888b
@@ -2246,7 +2247,7 @@ d8'   .8P 88     88  88   88   88  88        88         88
 
 ```
 
-NancyJUnderlined
+NancyJImproved
 
 ```text
 .d88888b   .d888888  8888ba.88ba   888888ba  dP         88888888b
@@ -2260,7 +2261,7 @@ oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
 ```
 
-Nipples
+NancyJUnderlined
 
 ```text
   {__ __        {_       {__       {__{_______  {__      {________
@@ -2274,7 +2275,7 @@ Nipples
 
 ```
 
-NScript
+Nipples
 
 ```text
       ,gg,              ,ggg,  ,ggg, ,ggg,_,ggg,   ,ggggggggggg,       ,gggg,     ,ggggggg,
@@ -2296,7 +2297,7 @@ a8P"Y88888P"  "Y8P"         `Y8    88    88    `Y8     88        "Y8P"  "Y88888 
 
 ```
 
-NTGreek
+NScript
 
 ```text
 
@@ -2311,7 +2312,7 @@ ______  ___  __   __ _______         _____
 
 ```
 
-NVScript
+NTGreek
 
 ```text
       ,gg,              ,ggg, ,ggg, ,ggg,_,ggg,  ,ggggggggggg,      ,gggg,   ,ggggggg,
@@ -2333,7 +2334,7 @@ a8P"Y88888P"  "Y8P"         `Y8   88    88    `Y8    88       "Y8P"  "Y88888`"Y8
 
 ```
 
-O8
+NVScript
 
 ```text
  oooooooo8      o      oooo     oooo oooooooooo ooooo       ooooooooooo
@@ -2345,14 +2346,14 @@ o88oooo888 o88o  o888o o88o  8  o88o o888o      o888ooooo88 o888ooo8888
 
 ```
 
-Octal
+O8
 
 ```text
 123 101 115 120 114 105
 
 ```
 
-Ogre
+Octal
 
 ```text
  __    _              ___  __    __
@@ -2364,7 +2365,7 @@ _\ \/  _  \/ /\/\ \/ ___/ /___//__
 
 ```
 
-OldBanner
+Ogre
 
 ```text
  #####     #    #     # ######  #       #######
@@ -2377,7 +2378,7 @@ OldBanner
 
 ```
 
-OS2
+OldBanner
 
 ```text
 _ooooo_____ooo____ooo_____ooo_ooooooo__oo______ooooooo_
@@ -2390,7 +2391,7 @@ _______________________________________________________
 
 ```
 
-Pawp
+OS2
 
 ```text
 
@@ -2405,7 +2406,7 @@ Pawp
 
 ```
 
-Peaks
+Pawp
 
 ```text
   /^^ ^^        /^       /^^       /^^/^^^^^^^  /^^      /^^^^^^^^
@@ -2419,7 +2420,7 @@ Peaks
 
 ```
 
-PeaksSlant
+Peaks
 
 ```text
      ___/\/\/\/\/\______/\/\______/\/\______/\/\__/\/\/\/\/\____/\/\________/\/\/\/\/\/\_
@@ -2431,7 +2432,7 @@ ________________________________________________________________________________
 
 ```
 
-Pebbles
+PeaksSlant
 
 ```text
 .oOOOo.     Oo    Oo      oO OooOOo.   o      o.OOoOoo
@@ -2447,7 +2448,7 @@ O.    .O o      O o        O O        o     .  O
 
 ```
 
-Pepper
+Pebbles
 
 ```text
   _  _      _     _
@@ -2457,7 +2458,7 @@ Pepper
 
 ```
 
-Poison
+Pepper
 
 ```text
 
@@ -2475,7 +2476,7 @@ Poison
 
 ```
 
-Puffy
+Poison
 
 ```text
  ___    _____         ___    _      ___
@@ -2489,7 +2490,7 @@ Puffy
 
 ```
 
-Puzzle
+Puffy
 
 ```text
      _         _         _         _         _         _
@@ -2500,7 +2501,7 @@ Puzzle
 
 ```
 
-Pyramid
+Puzzle
 
 ```text
   ^    ^    ^    ^    ^    ^
@@ -2509,7 +2510,7 @@ Pyramid
 
 ```
 
-Rammstein
+Pyramid
 
 ```text
      _____        _____         _____        _____        _____        _____
@@ -2522,7 +2523,7 @@ Rammstein
 
 ```
 
-Rectangles
+Rammstein
 
 ```text
 
@@ -2534,7 +2535,7 @@ Rectangles
 
 ```
 
-RedPhoenix
+Rectangles
 
 ```text
   _________    _____       _____    __________  .____      ___________
@@ -2547,7 +2548,7 @@ RedPhoenix
 
 ```
 
-Relief
+RedPhoenix
 
 ```text
 __________________________________________________________________
@@ -2560,7 +2561,7 @@ __________________________________________________________________
 
 ```
 
-Relief2
+Relief
 
 ```text
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -2570,6 +2571,23 @@ Relief2
 \\\\\\/// \/// \\/// \/// \\/// \/// \\\\\\\/// \\\\\\\/// \\\\\\\
 \/////// \\/// \\/// \/// \\/// \/// \\\\\\\///////// \///////// \
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+```
+
+Relief2
+
+```text
+=============================================================
+==      ======  =====  =====  ==       ===  ========        =
+=  ====  ====    ====   ===   ==  ====  ==  ========  =======
+=  ====  ===  ==  ===  =   =  ==  ====  ==  ========  =======
+==  =======  ====  ==  == ==  ==  ====  ==  ========  =======
+====  =====  ====  ==  =====  ==       ===  ========      ===
+======  ===        ==  =====  ==  ========  ========  =======
+=  ====  ==  ====  ==  =====  ==  ========  ========  =======
+=  ====  ==  ====  ==  =====  ==  ========  ========  =======
+==      ===  ====  ==  =====  ==  ========        ==        =
+=============================================================
 
 ```
 
@@ -2593,23 +2611,6 @@ Rev
 Reverse
 
 ```text
-=============================================================
-==      ======  =====  =====  ==       ===  ========        =
-=  ====  ====    ====   ===   ==  ====  ==  ========  =======
-=  ====  ===  ==  ===  =   =  ==  ====  ==  ========  =======
-==  =======  ====  ==  == ==  ==  ====  ==  ========  =======
-====  =====  ====  ==  =====  ==       ===  ========      ===
-======  ===        ==  =====  ==  ========  ========  =======
-=  ====  ==  ====  ==  =====  ==  ========  ========  =======
-=  ====  ==  ====  ==  =====  ==  ========  ========  =======
-==      ===  ====  ==  =====  ==  ========        ==        =
-=============================================================
-
-```
-
-Roman
-
-```text
  .oooooo..o       .o.       ooo        ooooo ooooooooo.   ooooo        oooooooooooo
 d8P'    `Y8      .888.      `88.       .888' `888   `Y88. `888'        `888'     `8
 Y88bo.          .8"888.      888b     d'888   888   .d88'  888          888
@@ -2623,14 +2624,14 @@ oo     .d8P  .8'     `888.   8    Y     888   888          888       o  888     
 
 ```
 
-Rot13
+Roman
 
 ```text
 FNZCYR
 
 ```
 
-Rotated
+Rot13
 
 ```text
    _ ____ _________  ____ ___
@@ -2639,7 +2640,7 @@ Rotated
 
 ```
 
-Rounded
+Rotated
 
 ```text
   ______ _______ _______ ______ _       _______
@@ -2652,7 +2653,7 @@ Rounded
 
 ```
 
-RowanCap
+Rounded
 
 ```text
    .dMMMb  .aMMMb  dMMMMMMMMb  dMMMMb  dMP     dMMMMMP
@@ -2664,7 +2665,7 @@ VMMMP" dMP dMP dMP dMP dMP dMP     dMMMMMP dMMMMMP
 
 ```
 
-Rozzo
+RowanCap
 
 ```text
  dP"8     e Y8b         e   e     888 88e  888     888'Y88
@@ -2674,6 +2675,18 @@ b Y8D  d888888888b   d8b Y8b Y8b  888      888  ,d 888 ",d
 8edP  d8888888b Y8b d888b Y8b Y8b 888      888,d88 888,d88
 
 
+
+```
+
+Rozzo
+
+```text
+  /   |\  |\  /| |\  / |\   |\    /|
+ /    | \ | \/ | | \/  | \  | \  / |
+/____ |\  | /\ | |     |  \ |  \/  |
+    / | \ |/  \| |     |    |      |
+   /  |   |    | | /\  |    |      |
+  /   |   |    | |/  \ |    |      |
 
 ```
 
@@ -2692,18 +2705,6 @@ Runic
 Runyc
 
 ```text
-  /   |\  |\  /| |\  / |\   |\    /|
- /    | \ | \/ | | \/  | \  | \  / |
-/____ |\  | /\ | |     |  \ |  \/  |
-    / | \ |/  \| |     |    |      |
-   /  |   |    | | /\  |    |      |
-  /   |   |    | |/  \ |    |      |
-
-```
-
-SantaClara
-
-```text
   __,    _,  _ _ _  _ __  __   ______
  (      / | ( / ) )( /  )( /  (  /
   `.   /--|  / / /  /--'  /     /--
@@ -2713,7 +2714,7 @@ SantaClara
 
 ```
 
-SBlood
+SantaClara
 
 ```text
   @@@@@@  @@@@@@  @@@@@@@@@@  @@@@@@@  @@@      @@@@@@@@
@@ -2725,7 +2726,7 @@ SBlood
 
 ```
 
-Script
+SBlood
 
 ```text
         ___,  ,__ __   , __    _    ___
@@ -2738,7 +2739,7 @@ Script
 
 ```
 
-ScriptSlant
+Script
 
 ```text
   ()     __  _ _ _  _ __   _   __
@@ -2750,7 +2751,7 @@ ScriptSlant
 
 ```
 
-SerifCap
+ScriptSlant
 
 ```text
  ___   __   __  __  ___  __    ___
@@ -2760,7 +2761,7 @@ SerifCap
 
 ```
 
-Shadow
+SerifCap
 
 ```text
    ___|    \     \  |  _ \  |     ____|
@@ -2771,7 +2772,7 @@ Shadow
 
 ```
 
-Shimrod
+Shadow
 
 ```text
  ,-.   ,.  .   , ;-.  ,    ,--.
@@ -2783,7 +2784,7 @@ Shimrod
 
 ```
 
-Short
+Shimrod
 
 ```text
 (` /||\/||)| [~
@@ -2792,7 +2793,7 @@ _)/-||  || |_[_
 
 ```
 
-Slant
+Short
 
 ```text
    _____ ___    __  _______  __    ______
@@ -2804,7 +2805,7 @@ Slant
 
 ```
 
-Slide
+Slant
 
 ```text
  #HH||  #|  ##   ||##HH| ##   ##HH||
@@ -2816,7 +2817,7 @@ Slide
 
 ```
 
-Small
+Slide
 
 ```text
   ___   _   __  __ ___ _    ___
@@ -2827,7 +2828,7 @@ Small
 
 ```
 
-SmallCaps
+Small
 
 ```text
   ___    _    _   _  ____  _     ___
@@ -2838,7 +2839,7 @@ SmallCaps
 
 ```
 
-IsometricSmall
+SmallCaps
 
 ```text
     ___       ___       ___       ___       ___       ___
@@ -2851,7 +2852,7 @@ IsometricSmall
 
 ```
 
-KeyboardSmall
+IsometricSmall
 
 ```text
  ____ ____ ____ ____ ____ ____
@@ -2861,7 +2862,7 @@ KeyboardSmall
 
 ```
 
-PoisonSmall
+KeyboardSmall
 
 ```text
 
@@ -2874,7 +2875,7 @@ PoisonSmall
 
 ```
 
-ScriptSmall
+PoisonSmall
 
 ```text
       __,  ,_ _   , _        __
@@ -2885,7 +2886,7 @@ ScriptSmall
 
 ```
 
-ShadowSmall
+ScriptSmall
 
 ```text
    __|   \    \  | _ \|    __|
@@ -2895,7 +2896,7 @@ ShadowSmall
 
 ```
 
-SlantSmall
+ShadowSmall
 
 ```text
    _______   __  ______  __   ____
@@ -2906,7 +2907,7 @@ SlantSmall
 
 ```
 
-TengwarSmall
+SlantSmall
 
 ```text
  _  .',  _ _   _       ,'
@@ -2915,7 +2916,7 @@ TengwarSmall
 
 ```
 
-Soft
+TengwarSmall
 
 ```text
 
@@ -2928,7 +2929,7 @@ Soft
 
 ```
 
-Speed
+Soft
 
 ```text
 ____________________  __________________________
@@ -2940,7 +2941,7 @@ ____/ /_  ___ |  /  / / _  ____/_  /___  /___
 
 ```
 
-Spliff
+Speed
 
 ```text
  _____  _____  __  __  _____  ____   _____
@@ -2951,7 +2952,7 @@ Spliff
 
 ```
 
-SRelief
+Spliff
 
 ```text
 _____/\\\\\\\\\\\_______/\\\\\\\\\_____/\\\\____________/\\\\__/\\\\\\\\\\\\\____/\\\______________/\\\\\\\\\\\\\\\_
@@ -2966,7 +2967,7 @@ _____/\\\\\\\\\\\_______/\\\\\\\\\_____/\\\\____________/\\\\__/\\\\\\\\\\\\\___
 
 ```
 
-Stacey
+SRelief
 
 ```text
 ___________________________________   _______
@@ -2979,7 +2980,7 @@ ___________________________________   _______
 
 ```
 
-Stampate
+Stacey
 
 ```text
 .---.     ,.  ,-,-,-.  .-,--. .    `.---
@@ -2991,7 +2992,7 @@ Stampate
 
 ```
 
-Stampatello
+Stampate
 
 ```text
 .---.     ,.  ,-,-,-.  .-,--. ,  .-,--.
@@ -3003,7 +3004,7 @@ Stampatello
 
 ```
 
-Standard
+Stampatello
 
 ```text
   ____    _    __  __ ____  _     _____
@@ -3015,7 +3016,7 @@ Standard
 
 ```
 
-Starstrips
+Standard
 
 ```text
 ------------   ------     ********  ----------- ----        ------------
@@ -3030,7 +3031,7 @@ Starstrips
 
 ```
 
-Starwars
+Starstrips
 
 ```text
      _______.     ___      .___  ___. .______    __       _______
@@ -3043,7 +3044,7 @@ Starwars
 
 ```
 
-Stellar
+Starwars
 
 ```text
   `.. ..        `.       `..       `..`.......  `..      `........
@@ -3057,7 +3058,7 @@ Stellar
 
 ```
 
-Stforek
+Stellar
 
 ```text
   __   __  __ __ ___ _   ___
@@ -3067,7 +3068,7 @@ Stforek
 
 ```
 
-Stop
+Stforek
 
 ```text
     _           ______  ______  _       _______
@@ -3080,7 +3081,7 @@ Stop
 
 ```
 
-Straight
+Stop
 
 ```text
  __         __     __
@@ -3090,7 +3091,7 @@ __)/--\|  ||   |__|__
 
 ```
 
-SubZero
+Straight
 
 ```text
  ______     ______     __    __     ______   __         ______
@@ -3102,7 +3103,7 @@ SubZero
 
 ```
 
-Swampland
+SubZero
 
 ```text
  ______   ________   ___ __ __   ______   __       ______
@@ -3116,7 +3117,7 @@ Swampland
 
 ```
 
-Swan
+Swampland
 
 ```text
 
@@ -3131,7 +3132,7 @@ Swan
 
 ```
 
-Sweet
+Swan
 
 ```text
                                                ___
@@ -3150,7 +3151,7 @@ Sweet
 
 ```
 
-Tanja
+Sweet
 
 ```text
  S)ssss    A)aa    M)mm mmm  P)ppppp  L)       E)eeeeee
@@ -3164,7 +3165,7 @@ S)    ss A)    aa M)      mm P)       L)       E)
 
 ```
 
-Tengwar
+Tanja
 
 ```text
             db                                              .dP'
@@ -3180,14 +3181,14 @@ Yb.   88    88     88    8P   88   88     8P   ,dP          88
 
 ```
 
-Term
+Tengwar
 
 ```text
 SAMPLE
 
 ```
 
-Test1
+Term
 
 ```text
  __________ _______  ___   ___ _________  ____      __________
@@ -3197,7 +3198,7 @@ Test1
 
 ```
 
-Thick
+Test1
 
 ```text
 .d88b.    db    8b   d8 888b. 8    8888
@@ -3208,7 +3209,7 @@ YPwww.   dPYb   8YbmdP8 8  .8 8    8www
 
 ```
 
-Thin
+Thick
 
 ```text
 
@@ -3220,7 +3221,7 @@ Thin
 
 ```
 
-ThreePoint
+Thin
 
 ```text
 (~ /\ |\/||~)| (~
@@ -3229,7 +3230,7 @@ _)/~~\|  ||~ |_(_
 
 ```
 
-Ticks
+ThreePoint
 
 ```text
 ___/\/\/\/\/\______/\/\______/\/\______/\/\__/\/\/\/\/\____/\/\________/\/\/\/\/\/\_
@@ -3241,7 +3242,7 @@ ________________________________________________________________________________
 
 ```
 
-TicksSlant
+Ticks
 
 ```text
      ___/\/\/\/\/\______/\/\______/\/\______/\/\__/\/\/\/\/\____/\/\________/\/\/\/\/\/\_
@@ -3253,7 +3254,7 @@ ________________________________________________________________________________
 
 ```
 
-Tiles
+TicksSlant
 
 ```text
   [.. ..        [.       [..       [..[.......  [..      [........
@@ -3267,7 +3268,7 @@ Tiles
 
 ```
 
-TinkerToy
+Tiles
 
 ```text
  o-o    O  o   o o--o  o    o--o
@@ -3280,7 +3281,7 @@ o--o  o   oo   o o     O---oo--o
 
 ```
 
-Tombstone
+TinkerToy
 
 ```text
   _,  _, _, _ __, _,  __,
@@ -3291,7 +3292,7 @@ Tombstone
 
 ```
 
-Train
+Tombstone
 
 ```text
    ___     ___   __  __     ___    _       ___
@@ -3303,7 +3304,7 @@ _|"""""|_|"""""|_|"""""|_| """ |_|"""""|_|"""""|
 
 ```
 
-Trek
+Train
 
 ```text
   .dBBBBP dBBBBBb     dBBBBBBb dBBBBBb  dBP    dBBBP
@@ -3315,7 +3316,7 @@ dBBBBP'  dBBBBBBB dB'dB'dB'  dBP    dBBBBP dBBBBP
 
 ```
 
-Tsalagi
+Trek
 
 ```text
          _      _        _  ____    ____
@@ -3326,7 +3327,7 @@ Tsalagi
 
 ```
 
-Tubular
+Tsalagi
 
 ```text
   O~~ ~~        O~       O~~       O~~O~~~~~~~  O~~      O~~~~~~~~
@@ -3340,7 +3341,7 @@ O~~    O~~ O~~       O~~ O~~       O~~O~~       O~~      O~~
 
 ```
 
-Twisted
+Tubular
 
 ```text
  ______    _____    __    __    __ __     __        _____
@@ -3354,7 +3355,7 @@ Twisted
 
 ```
 
-TwoPoint
+Twisted
 
 ```text
 (~|~||\/||~)| [~
@@ -3362,7 +3363,7 @@ _)|~||  ||~ |_[_
 
 ```
 
-Univers
+TwoPoint
 
 ```text
 
@@ -3379,7 +3380,7 @@ Y8a     a8P d8'        `8b  88    `888'    88 88          88          88
 
 ```
 
-UsaFlag
+Univers
 
 ```text
  :::===  :::====  :::=======  :::====  :::      :::=====
@@ -3391,7 +3392,7 @@ UsaFlag
 
 ```
 
-Varsity
+UsaFlag
 
 ```text
   ______        _       ____    ____  _______  _____     ________
@@ -3404,7 +3405,7 @@ Varsity
 
 ```
 
-Wavy
+Varsity
 
 ```text
   __   _       __      ___
@@ -3414,7 +3415,7 @@ Wavy
 
 ```
 
-Weird
+Wavy
 
 ```text
   __   __        __        __
@@ -3426,7 +3427,7 @@ Weird
 
 ```
 
-WetLetter
+Weird
 
 ```text
    .---.  .--.           ,---.  ,-.    ,---.
@@ -3439,7 +3440,7 @@ WetLetter
 
 ```
 
-Whimsy
+WetLetter
 
 ```text
                                            d8b
@@ -3455,9 +3456,11 @@ Whimsy
 
 ```
 
-Wow
+Whimsy
 
 ```text
 ((5 //-\ ][\/][ ]]P ][_ ]E
 
 ```
+
+Wow
