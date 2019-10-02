@@ -28,15 +28,18 @@ namespace FiggleFontsTests
     {
         static void Main(string[] args)
         {
-            var propertyInfos = (typeof(FiggleFonts)).GetProperties(BindingFlags.Public | BindingFlags.Static)
-                                        .Where(info => info.PropertyType == typeof(FiggleFont));
+            var propertyInfos = (typeof(FiggleFonts))
+                                .GetProperties(BindingFlags.Public | BindingFlags.Static)
+                                .Where(info => info.PropertyType == typeof(FiggleFont));
 
             var stringBuilder = new StringBuilder();
             foreach (PropertyInfo propertyInfo in propertyInfos)
             {
                 try
                 {
-                    stringBuilder.AppendLine(((FiggleFont)propertyInfo.GetValue(null)).Render("SAMPLE"));
+                    stringBuilder.AppendLine(((FiggleFont)propertyInfo
+                                                 .GetValue(null))
+                                             .Render("SAMPLE"));
                     stringBuilder.AppendLine(propertyInfo.Name);
                     stringBuilder.AppendLine();
                     stringBuilder.AppendLine();
@@ -54,6 +57,7 @@ namespace FiggleFontsTests
 ```
 
 <code>
+<pre>
 
 _\~ /\ |\/| |^ |_ [- 
                      
@@ -3193,4 +3197,5 @@ Whimsy
 
 Wow
 
-<code>
+</pre>
+</code>
