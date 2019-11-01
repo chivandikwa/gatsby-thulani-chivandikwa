@@ -15,7 +15,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@emotion/core": "10.0.17",
+    "@emotion/core": "10.0.22",
     "@emotion/styled": "10.0.14",
     "@emotion/styled-base": "10.0.13",
     "classnames": "2.2.6",
