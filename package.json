@@ -20,7 +20,7 @@
     "@emotion/styled-base": "10.0.13",
     "classnames": "2.2.6",
     "cssnano": "4.1.10",
-    "emotion": "10.0.17",
+    "emotion": "10.0.27",
     "emotion-server": "10.0.14",
     "gatsby": "2.15.28",
     "gatsby-image": "2.2.8",
@@ -65,7 +65,7 @@
   "devDependencies": {
     "@types/classnames": "2.2.9",
     "@types/lodash": "4.14.141",
-    "@types/node": "12.7.2",
+    "@types/node": "13.7.1",
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
     "@types/react-helmet": "5.0.8",
