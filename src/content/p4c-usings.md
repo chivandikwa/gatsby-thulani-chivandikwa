@@ -3,7 +3,7 @@ layout: post
 title: Python for C# developers series (Using Directives)
 image: img/animal1.jpg
 author: Thulani S. Chivandikwa
-date: 2020-03-22T10:00:00.000Z
+date: 2020-03-22T00:00:00.000Z
 tags: [.NET, C#, Python, Context Managers, Usings, Using Directive]
 draft: false
 ---
@@ -43,7 +43,7 @@ Behind the scenses something interesting is happening, let's have a look at how 
 
 ### Implementing Context Managers as classes
 
-At the very least a context manager has an **enter** and **exit** method defined which are executed and beginning and end of scope (context). If an exception occurs, Python passes the type, value and traceback of the exception to the **exit** method. If **exit** returns True then the exception was gracefully handled.
+At the very least a context manager has an <code>\_\_enter\_\_</code> and <code>\_\_exit**</code> method defined which are executed and beginning and end of scope (context). If an exception occurs, Python passes the type, value and traceback of the exception to the <code>\_\_exit**</code> method. If <code>\_\_exit\*\*</code> returns True then the exception was gracefully handled.
 
 Let's consider a scoped context manager that executes a one lambda on start of the scope and another on end of the scope (context).
 
@@ -75,7 +75,7 @@ with ScopedActions(name='test', startup=lambda: print('started'), cleanup=lambda
 
 ### Implementing Context Managers as generators
 
-Context managers can also be implementing in a more succint way using generators as functions two parts, the context start and context end separater by the yield keyword. Exceptions in this scenario can be handled by a traditional try statement which is also more intuitive.
+Context managers can also be implementing in a more succint way using generators as functions two parts, the context start and context end separater by the yield keyword. Exceptions in this scenario can be handled by a traditional try statement which is also more intuitive. This makes use of the <code>@contextmanager</code> decorator.
 
 ```python
 from contextlib import contextmanager
