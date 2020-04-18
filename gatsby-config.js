@@ -38,7 +38,7 @@ module.exports = {
             options: {
               maxWidth: 1170,
               quality: 100,
-              loading: lazy,
+              loading: 'lazy',
             },
           },
         ],
