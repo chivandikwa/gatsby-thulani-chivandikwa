@@ -37,7 +37,8 @@ module.exports = {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 1170,
-              quality: 90,
+              quality: 100,
+              loading: lazy,
             },
           },
         ],
@@ -125,7 +126,7 @@ module.exports = {
               injectStyles: true, // Injects (minimal) additional CSS for layout and scrolling
               extensions: [], // Extensions to download from the marketplace to provide more languages and themes
               languageAliases: {}, // Map of custom/unknown language codes to standard/known language codes
-              replaceColor: x => x, // Function allowing replacement of a theme color with another. Useful for replacing hex colors with CSS variables.
+              replaceColor: (x) => x, // Function allowing replacement of a theme color with another. Useful for replacing hex colors with CSS variables.
               getLineClassName: ({
                 // Function allowing dynamic setting of additional class names on individual lines
                 content, //   - the string content of the line
