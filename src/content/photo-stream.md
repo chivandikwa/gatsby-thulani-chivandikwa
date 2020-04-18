@@ -1,6 +1,5 @@
 ---
 layout: post
-title: Anashe Photography Photo Stream
 author: Thulani S. Chivandikwa
 date: 2020-12-01T10:00:00.000Z
 tags: [photography]
