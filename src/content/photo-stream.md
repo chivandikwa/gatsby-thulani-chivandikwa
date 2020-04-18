@@ -10,10 +10,8 @@ draft: false
 
 #### A closeup shot of a bird drinking from a pond in the center of Oslo, Norway.
 
-[@anashe.photography](https://www.instagram.com/p/B-8Kzmfho0n/?utm_source=ig_web_copy_link)
-
-📷 Canon EOS 1300D/Rebel T6/Kiss X80
-
+[@anashe.photography](https://www.instagram.com/p/B-8Kzmfho0n/?utm_source=ig_web_copy_link)  
+📷 Canon EOS 1300D/Rebel T6/Kiss X80  
 🎞️ 200mm ƒ/5 1/1000s ISO 100
 
 ![dragon-fly-photo](https://raw.githubusercontent.com/chivandikwa/gatsby-thulani-chivandikwa/master/src/content/img/latest/dragon-fly-photo.jpg)
