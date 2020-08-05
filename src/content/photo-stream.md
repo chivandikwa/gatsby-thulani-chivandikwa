@@ -3,7 +3,7 @@ layout: post
 author: Thulani S. Chivandikwa
 date: 2020-12-01T10:00:00.000Z
 tags: [photography]
-draft: false
+draft: true
 ---
 
 ![bird-photo1](https://raw.githubusercontent.com/chivandikwa/gatsby-thulani-chivandikwa/master/src/content/img/latest/bird-photo1.jpg)
