@@ -31,3 +31,20 @@ def sample(unconstrained: Any) -> Any:
     pass
 
 ```
+
+### NoReturn
+
+Special type indicating that a function never returns as in case of function that loops infinitely or always raises an exception.
+
+
+```python
+
+from typing import NoReturn
+
+
+# this will never return
+def raise_always() -> NoReturn:
+    raise RuntimeError()
+
+
+```
