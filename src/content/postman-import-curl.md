@@ -18,11 +18,6 @@ Fortunately I found a way to extract curl code from Postman which I then save in
 
 Here is a sample request:
 
-Endpoint: https://localhost:44369/api/dummy/
-Request Type: POST
-Headers: [target: cron, full_run: true, user: anonymous, Content-Type: application/json]
-Body: { "job": "FTP Cleanup", "delay": 0 }
-
 | | |
 | :------------: | :------------: |
 |   Endpoint  |   https://localhost:44369/api/dummy/   |
