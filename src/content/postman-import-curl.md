@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Importing curl requests in Postman
-image: img/best/windmill.jpg
+image: img/best/water-tower.jpg
 author: Thulani S. Chivandikwa
 date: 2020-04-04T00:00:00.000Z
 tags: [Postman, curl, request]
