@@ -156,7 +156,8 @@ Let's get straight to it and look at a different pattern in code.
             return this;
         }
 
-        protected override Money Build() => new Money(Get(x => x.Value), Get(x => x.CurrencyIsoCode));
+        protected override Money Build()
+          => new Money(Get(x => x.Value), Get(x => x.CurrencyIsoCode));
     }
 ```
 
@@ -174,7 +175,7 @@ Let's see some usage examples:
     public class Sample
     {
         [Fact]
-        public void Test1()
+        public void Test()
         {
             // caters for the common scenario, you just need a valid position
 
@@ -194,7 +195,8 @@ Let's see some usage examples:
                         .WithValue(2_480_00)
                         .WithCurrencyIsoCode("EUR"));
 
-            // caters for scenario where you care for single property in your test but the rest also should be valid
+            // caters for scenario where you care for single property
+            // in your test but the rest also should be valid
             Position position3 = A.Position
                 .WithIdentifier(Guid.NewGuid());
         }
